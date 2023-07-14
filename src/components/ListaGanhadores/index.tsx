@@ -1,6 +1,5 @@
 import { Box, Button, Flex, Text } from "@chakra-ui/react"
 import { BsStar } from 'react-icons/bs'
-import styles from './styles.module.css';
 import { IconTitle } from "../IconTitle";
 import { Ganhador } from "./Ganhador";
 import "react-multi-carousel/lib/styles.css";
@@ -34,7 +33,7 @@ export const ListaGanhadores = ( ) => {
             <IconTitle  IconComponent={BsStar} colorOne="rgba(77,0,255,1)" colorTwo="rgba(203,58,255,1)"/>
             <Text fontSize="x-large">GANHADORES</Text>
         </Flex>
-        <Flex w="100%" flexWrap={"wrap"} gap={4} p={4}>
+        <Flex w="100%" flexWrap={"wrap"} gap={4} p={4} justifyContent="center">
           {[1,2,3,8,7,8,6].map((item) => (
             <Ganhador key={item}/>
           ))}
