@@ -62,7 +62,8 @@ const Header = () => {
             
           >
             <Text _hover={{
-              color:"white"
+              color:"white",
+              textShadow:"1px 1px 3px white"
               }}
               style={{
                 borderBottom: "2px solid transparent",
@@ -76,7 +77,9 @@ const Header = () => {
 
           >
             <Text _hover={{
-              color:"white"
+              color:"white",
+              textShadow:"1px 1px 3px white"
+
               }}
               style={{
                 borderBottom: "2px solid transparent",
