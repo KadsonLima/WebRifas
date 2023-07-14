@@ -14,16 +14,16 @@ export const ButtonAuth = () => {
 
 
     return (
-    <Flex className={styles.buttonBox} gap={2} alignItems="center">
+    <Flex className={styles.buttonBox} gap={2} p={"0 10px"} alignItems="center">
         <Flex className={styles.button} alignItems="center" gap={1} onClick={onOpen}>
-            <IoPersonSharp size="20px" color="red" />
+            <IoPersonSharp size="20px" color="#a19999" />
              <Text>Entrar</Text>
         </Flex>
         <ModalLogin isOpen={isOpen} onClose={onClose}/>
         <ModalCadastro isOpen={isOpenSignUp} onClose={onCloseSignUp}/>
         /
         <Flex className={styles.button} alignItems="center" gap={1} onClick={onOpenisOpenSignUp}>
-            <IoPersonAddSharp size="20px" color="red" />
+            <IoPersonAddSharp size="20px" color="#a19999" />
             <Text>Cadastro</Text>
         </Flex>
     </Flex>
