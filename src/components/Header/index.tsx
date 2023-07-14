@@ -94,6 +94,10 @@ const Header = () => {
             aria-label={isExpanded ? "Fechar menu" : "Abrir menu"}
             marginRight={2}
             onClick={handleToggle}
+            bg="transparent"
+            fontSize={30}
+            _hover={{background:"transparent", filter:"brightness(2)"}}
+            color="#d5d1d1"
           />
         </Box>
 
