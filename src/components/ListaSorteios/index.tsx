@@ -30,7 +30,7 @@ export const ListaSorteios = ( ) => {
 
 
       return <Box w="100%">
-      <Flex gap={2} marginBottom={2} marginTop={30}>
+      <Flex gap={2} marginBottom={5} marginTop={30}>
           <IconTitle  IconComponent={BsTrophy} colorOne="rgba(255,162,0,1)" colorTwo="rgba(255,213,0,1)"/>
           <Text fontSize="x-large">SORTEIOS</Text>
       </Flex>

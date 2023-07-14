@@ -28,11 +28,10 @@ const Header = () => {
 
   return (
     <Flex
-      bg={stylesColor.backgroundColor}
+      bg={"black"}
       justify="center"
-      borderBottom={"2px"}
-      borderColor={"GrayText"}
       position={"fixed"}
+      boxShadow={"0 6px 4px -6px white"}
       left={0}
       top={0}
       w="100%"
@@ -46,7 +45,7 @@ const Header = () => {
         height={70}
         boxShadow="md"
         position="relative"
-        bg={stylesColor.backgroundColor}
+        bg={"black"}
         maxW={1350}
         w="100%"
       >
