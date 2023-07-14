@@ -25,7 +25,7 @@ export const PageContainer = ({ children }: { children: any }) => {
           textColor={stylesColor.textColor}
           width={"100%"}
           minHeight={"100vh"}
-          padding={4}
+          padding={3}
         >
           {children}
 

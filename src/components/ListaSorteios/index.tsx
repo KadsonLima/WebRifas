@@ -34,8 +34,8 @@ export const ListaSorteios = ( ) => {
           <IconTitle  IconComponent={BsTrophy} colorOne="rgba(255,162,0,1)" colorTwo="rgba(255,213,0,1)"/>
           <Text fontSize="x-large">SORTEIOS</Text>
       </Flex>
-      <Flex w="100%" flexWrap={"wrap"} gap={4} p={4}>
-        {[1,2,3,8,7,8,6].map((item) => (
+      <Flex w="100%" flexWrap={"wrap"} gap={3} >
+        {[1,2,3,8,6].map((item) => (
           <Sorteio key={item}/>
         ))}
       </Flex>
