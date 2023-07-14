@@ -1,4 +1,15 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {}
+const { resolve } = require('path');
 
-module.exports = nextConfig
+module.exports = {
+  reactStrictMode: true,
+
+  pageExtensions: ['tsx', 'ts'],
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname:'vinyrifas.com'
+      }
+    ],
+  },
+};
