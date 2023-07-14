@@ -4,6 +4,7 @@ import styles from './styles.module.css';
 import { IconTitle } from "../IconTitle";
 import { Sorteio } from "./Sorteio";
 import "react-multi-carousel/lib/styles.css";
+import Link from "next/link";
 
 
 export const ListaSorteios = ( ) => {
@@ -36,7 +37,10 @@ export const ListaSorteios = ( ) => {
       </Flex>
       <Flex w="100%" flexWrap={"wrap"} gap={3} justifyContent="center">
         {[1,2,3,8,6].map((item) => (
+          <Link href="/Sorteio/Nome Do Sorteio">
+          
           <Sorteio key={item}/>
+          </Link>
         ))}
       </Flex>
   </Box>

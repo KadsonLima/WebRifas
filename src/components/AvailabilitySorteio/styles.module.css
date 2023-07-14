@@ -1,0 +1,28 @@
+
+
+
+.disponivel{
+    background: linear-gradient(45deg, rgba(74,74,74,1) 0%, rgba(127,127,127,1) 100%);
+    font-weight: 700;
+
+}
+
+.date{
+    background: linear-gradient(45deg, rgba(43,43,43,1) 0%, rgba(52,58,64,1) 100%);
+   
+    
+}
+
+.disponivel, .date, .win{
+    height: 80px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.title{
+    font-weight: 700;
+    color: #ffffff80;
+}
