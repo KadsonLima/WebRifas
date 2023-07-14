@@ -17,7 +17,7 @@ const SorteioPage: React.FC = () => {
         <Flex justifyContent="center" gap={"20px 20px"} flexWrap={"wrap"}>
             <Image maxW="400px" width="100%" borderRadius={20} src="https://vinyrifas.com/wp-content/uploads/bfi_thumb/30E5C775-824C-4023-B06C-358DC2BA33C8-q7pkk5atk8nanroxcxcj0ascu0qq0cquifqq7se92o.jpeg" alt="sorteio"/>
             <Box w="100%" maxW="400px">
-                <AvailabilitySorteio status={true}/>
+                <AvailabilitySorteio status={false}/>
             </Box>
         </Flex>
 

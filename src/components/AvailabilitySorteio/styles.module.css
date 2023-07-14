@@ -13,6 +13,12 @@
     
 }
 
+.win{
+    background: linear-gradient(45deg, rgba(40,167,64,1) 0%, rgba(138,240,55,1) 100%);
+    color: white;
+    animation: pulse 1s infinite alternate;
+}
+
 .disponivel, .date, .win{
     height: 80px;
     border-radius: 15px;
@@ -26,3 +32,20 @@
     font-weight: 700;
     color: #ffffff80;
 }
+
+.win svg{
+    position: absolute;
+    left: 0;
+    opacity: 0.5;
+}
+@keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.04);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
