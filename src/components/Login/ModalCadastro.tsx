@@ -1,3 +1,5 @@
+import useSignUp from '@/hooks/api/signUp';
+import { formatPhoneNumber } from '@/utils/formatPhoneNumber';
 import {
     Modal,
     ModalOverlay,
@@ -11,8 +13,9 @@ import {
     FormControl,
     Input,
     Text,
+    useToast, 
   } from '@chakra-ui/react'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { IoPersonSharp, IoPersonAddSharp, IoLogoWhatsapp } from 'react-icons/io5'
 
 
@@ -22,10 +25,52 @@ interface OpenModalProps {
 }
 
 
+
 export const ModalCadastro = ({isOpen, onClose}:OpenModalProps)=>{
 
   const initialRef = React.useRef(null)
   const finalRef = React.useRef(null)
+  const { userError, user, userLoading, getUser } = useSignUp();
+  const toast = useToast();
+  const [form, setForm] = useState({
+    name: '',
+    number: '',
+  });
+  
+  useEffect(()=>{
+    
+  }, [userLoading])
+
+  const handleForm = (event:any) => {
+      const { name, value } = event.target;
+      setForm({ ...form, [name]: value });
+    
+  };
+
+  const handleSubmit = (event:any) => {
+    event.preventDefault();
+
+      const fetchData = async () => {
+        try {
+          const user = await getUser(form);
+          toast({
+            title:`Conta criada!`,
+            status:'success',
+          })
+          onClose();
+        } catch (error:any) {
+          const { details, message} = error.response.data;
+          toast({
+            title:`${message}`,
+            status:'error',
+          })
+        }
+      }
+      fetchData();
+      
+  };
+
+
 
   return (
     <>
@@ -44,18 +89,18 @@ export const ModalCadastro = ({isOpen, onClose}:OpenModalProps)=>{
 
             <FormControl>
               <FormLabel display={"Flex"} alignItems={'center'} gap={2}><IoPersonSharp size={20}/>Nome e Sobrenome*</FormLabel>
-              <Input ref={initialRef} placeholder='Digite o seu nome e sobrenome' />
+              <Input ref={initialRef} placeholder='Digite o seu nome e sobrenome' type='text' name="name" value={form.name} onChange={handleForm} />
             </FormControl>
 
             <FormControl mt={4}>
               <FormLabel display={"Flex"} alignItems={'center'} gap={2}><IoLogoWhatsapp size={20}/>Whatsapp*</FormLabel>
-              <Input placeholder='Digite o seu whatsapp com DDD' />
+              <Input placeholder='Digite o seu whatsapp com DDD'  type='text' name="number" value={formatPhoneNumber(form.number)} onChange={handleForm}  />
             </FormControl>
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='blue' mr={3}>
-              Cadastrar
+            <Button colorScheme='blue' mr={3} onClick={handleSubmit} isLoading={userLoading} isDisabled={userLoading}>
+             Cadastrar
             </Button>
             <Button onClick={onClose}>Cancel</Button>
           </ModalFooter>

@@ -1,25 +1,38 @@
 import { useEffect, useState } from "react";
 import { Box, Flex, IconButton, Text } from "@chakra-ui/react";
 import { HamburgerIcon, ChevronDownIcon } from "@chakra-ui/icons";
-import { stylesColor } from "../../styles/colors";
 import Logo from "../../assets/images/light.png"
 import Link from "next/link";
 import Image from "next/image";
 import { ButtonAuth } from "../Login/Button";
 import { MenuMobile } from "../MenuMobile";
-import { color } from "framer-motion";
+import { useSelector } from 'react-redux';
+import { useDispatch } from "react-redux";
+import { loginUser } from "@/redux/user/actions";
 
 const Header = () => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const { currentUser } = useSelector((state: any) => state.userReducer);
+  const dispatch = useDispatch();
+
 
   useEffect(()=>{
-    if(isExpanded) {
+    const user = localStorage.getItem('user')
+
+    if(user){
+       dispatch(loginUser(JSON.parse(user)))
+    }
+
+  },[])
+
+  useEffect(() => {
+    if (isExpanded) {
       document.body.style.overflow = 'hidden';
-    }else{
+    } else {
       document.body.style.overflow = 'scroll';
     }
 
-  },[isExpanded])
+  }, [isExpanded])
 
   const handleToggle = () => {
     setIsExpanded(!isExpanded);
@@ -50,43 +63,57 @@ const Header = () => {
         w="100%"
       >
         {/* Logo */}
-        <Link  href="/">
-          <Image src={Logo} alt="logo" height="60"  />
+        <Link href="/">
+          <Image src={Logo} alt="logo" height="60" />
         </Link>
 
         {/* Rotas no desktop */}
         <Flex display={{ base: "none", md: "flex" }} align="center" gap={2}>
           <Link
             href="/"
-            style={{ color:`#e0e0e0`, fontSize:18, marginRight:4, fontWeight:300}}
-            
+            style={{ color: `#e0e0e0`, fontSize: 18, marginRight: 4, fontWeight: 300 }}
+
           >
             <Text _hover={{
-              color:"white",
-              textShadow:"1px 1px 3px white"
-              }}
+              color: "white",
+              textShadow: "1px 1px 3px white"
+            }}
               style={{
                 borderBottom: "2px solid transparent",
                 transition: "border-color 0.3s ease-in-out",
               }}
-              >SORTEIOS</Text>
+            >SORTEIOS</Text>
           </Link>
           <Link
             href="/Shop"
-            style={{ color:`#e0e0e0`, marginRight:4, fontSize:18, fontWeight:300}}
+            style={{ color: `#e0e0e0`, marginRight: 4, fontSize: 18, fontWeight: 300 }}
 
           >
             <Text _hover={{
-              color:"white",
-              textShadow:"1px 1px 3px white"
+              color: "white",
+              textShadow: "1px 1px 3px white"
 
-              }}
+            }}
               style={{
                 borderBottom: "2px solid transparent",
                 transition: "0.3s ease-in-out",
               }}>GANHADORES</Text>
           </Link>
-          
+          {currentUser && <Link
+            href="/Shop"
+            style={{ color: `#e0e0e0`, marginRight: 4, fontSize: 18, fontWeight: 300 }}
+
+          >
+            <Text _hover={{
+              color: "white",
+              textShadow: "1px 1px 3px white"
+
+            }}
+              style={{
+                borderBottom: "2px solid transparent",
+                transition: "0.3s ease-in-out",
+              }}>MINHAS COMPRAS</Text>
+          </Link>}
         </Flex>
 
         {/* Botão de menu no mobile */}
@@ -98,18 +125,18 @@ const Header = () => {
             onClick={handleToggle}
             bg="transparent"
             fontSize={30}
-            _hover={{background:"transparent", filter:"brightness(2)"}}
+            _hover={{ background: "transparent", filter: "brightness(2)" }}
             color="#d5d1d1"
           />
         </Box>
 
 
         {/* Rotas no mobile */}
-        {isExpanded && <MenuMobile setIsExpanded={setIsExpanded} isExpanded={isExpanded}/>}
+        {isExpanded && <MenuMobile setIsExpanded={setIsExpanded} isExpanded={isExpanded} />}
 
-      <Box display={{ base: "none", md: "flex" }} >
-          <ButtonAuth/>
-       </Box>
+        <Box display={{ base: "none", md: "flex" }} >
+          <ButtonAuth />
+        </Box>
 
       </Flex>
     </Flex>

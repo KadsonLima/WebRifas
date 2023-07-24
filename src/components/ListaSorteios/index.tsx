@@ -37,7 +37,7 @@ export const ListaSorteios = ( ) => {
       </Flex>
       <Flex w="100%" flexWrap={"wrap"} gap={3} justifyContent="center">
         {[1,2,3,8,6].map((item) => (
-          <Link href="/Sorteio/Nome Do Sorteio">
+          <Link href="/Sorteio/Nome Do Sorteio" key={item}>
           
           <Sorteio key={item}/>
           </Link>
